@@ -7,25 +7,11 @@
 <span class="fc" id="L7">    }</span>
 
     public boolean checkNameToEmboss() {
-<span class="fc bfc" id="L10" title="All 4 branches covered.">        if (name.length() &gt;= 3 &amp;&amp; name.length() &lt;= 19) {</span>
-<span class="fc bfc" id="L11" title="All 4 branches covered.">            if (!(name.startsWith(&quot; &quot;)) &amp;&amp; !(name.endsWith(&quot; &quot;))) {</span>
-<span class="fc bfc" id="L12" title="All 2 branches covered.">                if (nameContainsOnlyOneSpace(name)) {</span>
-<span class="fc" id="L13">                    return true;</span>
-                }
-            }
+        try {
+<span class="fc" id="L11">            return name.matches(&quot;^(?=.{3,19}$)[а-яА-ЯёЁ]+\\s[а-яА-ЯёЁ]+$&quot;);</span>
+<span class="fc" id="L12">        } catch (NullPointerException e) {</span>
+<span class="fc" id="L13">            return false;</span>
         }
-<span class="fc" id="L17">        return false;</span>
-    }
-
-    public boolean nameContainsOnlyOneSpace(String name) {
-<span class="fc" id="L21">        char[] nameArray = name.toCharArray();</span>
-<span class="fc" id="L22">        int spaceCounter = 0;</span>
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        for (char c : nameArray) {</span>
-<span class="fc bfc" id="L24" title="All 2 branches covered.">            if (c == ' ') {</span>
-<span class="fc" id="L25">                spaceCounter++;</span>
-            }
-        }
-<span class="fc bfc" id="L28" title="All 2 branches covered.">        return spaceCounter == 1;</span>
     }
 
 }
