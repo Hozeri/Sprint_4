@@ -5,12 +5,12 @@ import org.junit.runners.Parameterized;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class NameToEmboss {
+public class NameToEmbossTest {
 
     private final String name;
     private final boolean expected;
 
-    public NameToEmboss(String name, boolean expected) {
+    public NameToEmbossTest(String name, boolean expected) {
         this.name = name;
         this.expected = expected;
     }
@@ -18,13 +18,11 @@ public class NameToEmboss {
     @Parameterized.Parameters
     public static Object[][] getNameData() {
         return new Object[][]{
-                //позитивные проверки
                 {"Иван Иванов", true},
                 {"И И", true},
                 {"Ив И", true},
                 {"Алексей Афанасьевич", true},
                 {"Алексей Афанасьеви", true},
-                //негативные проверки
                 {"Ив", false},
                 {"Алексей Афанасьевичч", false},
                 {" Иван Иванов", false},
