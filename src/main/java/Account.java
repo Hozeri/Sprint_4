@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Account {
 
     private final String name;
@@ -7,11 +10,11 @@ public class Account {
     }
 
     public boolean checkNameToEmboss() {
-        try {
-            return name.matches("^(?=.{3,19}$)[а-яА-ЯёЁ]+\\s[а-яА-ЯёЁ]+$");
-        } catch (NullPointerException e) {
-            return false;
+        Pattern pattern = Pattern.compile("^(?=.{3,19}$)[а-яА-ЯёЁ]+\\s[а-яА-ЯёЁ]+$");
+        if (name != null) {
+            Matcher matcher = pattern.matcher(name);
+            return matcher.matches();
         }
+        return false;
     }
-
 }
